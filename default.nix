@@ -17,8 +17,6 @@
 
     buildInputs = oldAttrs.buildInputs ++ [ pythonPackages.cython ];
 
-    src =  builtins.fetchTarball {
-      url = "https://github.com/numpy/numpy/archive/master.tar.gz";
-    };
+    src = <numpy>;
   });
 }
