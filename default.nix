@@ -11,4 +11,14 @@
       make install PREFIX=$out
     '';
   };
+
+  masterNumpy = pythonPackages.numpy.overrideAttrs(oldAttrs: {
+    name = "numpy-master";
+
+    buildInputs = oldAttrs.buildInputs ++ [ pythonPackages.cython ];
+
+    src =  builtins.fetchTarball {
+      url = "https://github.com/numpy/numpy/archive/master.tar.gz";
+    };
+  });
 }
