@@ -17,12 +17,13 @@ rec {
 
     buildInputs = oldAttrs.buildInputs ++ [ pythonPackages.cython ];
 
+    # <numpy> = https://github.com/costrouc/numpy.git
     src = <numpy>;
   });
 
   my_package = pythonPackages.buildPythonPackage {
     pname = "my_package";
-    version = "1.0";
+    version = "1.1";
 
     src = ./.;
 
