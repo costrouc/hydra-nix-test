@@ -1,12 +1,14 @@
 { pkgs ? import <nixpkgs> { }, pythonPackages ? pkgs.python3Packages }:
 
-pkgs.stdenv.mkDerivation rec {
-  name = "hydra-nix-test-${version}";
-  version = "1.0";
+{
+  hydra-nix-test = pkgs.stdenv.mkDerivation rec {
+    name = "hydra-nix-test-${version}";
+    version = "1.0";
 
-  src = ./.;
+    src = ./.;
 
-  installPhase = ''
-    make install PREFIX=$out
-  '';
+    installPhase = ''
+      make install PREFIX=$out
+    '';
+  };
 }
