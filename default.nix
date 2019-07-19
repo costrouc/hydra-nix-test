@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> { }, pythonPackages ? pkgs.python3Packages }:
 
-{
+rec {
   hydra-nix-test = pkgs.stdenv.mkDerivation rec {
     name = "hydra-nix-test-${version}";
     version = "1.0";
@@ -19,4 +19,13 @@
 
     src = <numpy>;
   });
+
+  my_package = pythonPackages.buildPythonPackage {
+    pname = "my_package";
+    version = "1.0";
+
+    src = ./.;
+
+    propagatedBuildInputs = [ masterNumpy ];
+  };
 }
